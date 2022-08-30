@@ -1,0 +1,13 @@
+@import 'vars';
+@import 'fonts';
+@import 'reset';
+@import 'libs';
+@import 'global';
+
+
+.header{
+    padding: 50px;
+    &__wrap{
+        background-color: goldenrod;
+    }
+}
