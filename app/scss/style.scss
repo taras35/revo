@@ -5,3 +5,37 @@
 @import 'global';
 
 
+.header {
+  &__wrap {
+    background: linear-gradient(to right, #F9FBFF 50%, $primary 50%);
+    height: 768px;
+  }
+  &__box {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  &__logo {}
+  &__title {}
+  &__image {
+    flex: 0 1 690px;
+  }
+  &__img {}
+  &__menu {
+    margin-left: 56px;
+  }
+  &__menu-cart {}
+  &__menu-list {}
+  &__menu-item {}
+  &__menu-link {}
+}
+.container {
+}
+.accent {
+  background-color: $accent1;
+  color: #fff;
+}
