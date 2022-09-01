@@ -4,38 +4,162 @@
 @import 'libs';
 @import 'global';
 
+@media (min-width: 319px) {
+  .header {
+    &__wrap {
 
-.header {
-  &__wrap {
-    background: linear-gradient(to right, #F9FBFF 50%, $primary 50%);
-    height: 768px;
+    }
+    &__box {
+      display: flex;
+      flex-direction: column;
+    }
+    &__content {
+      display: flex;
+      flex-direction: column;
+      // order: 1;
+    }
+    &__logo {}
+    &__title {}
+    &__image {
+      // order: 3;
+    }
+    &__img {}
+    &__menu {
+      display: flex;
+      // order: 2;
+    }
+    &__menu-cart {
+      svg path {
+         fill: $primary; 
+        }
+    }
+    &__menu-list {
+      background-color: $primary;
+    }
+    &__menu-item {}
+    &__menu-link {
+      text-decoration: none;
+      text-transform: uppercase;
+      color: #EDF0F5;
+    }
+    &__menu-burger{
+      display: block;
+      :not(:last-child) {
+        margin-bottom: 2px;
+      }
+      span {
+        display: block;
+        width: 24px;
+        height: 2px;
+        background-color: $dark-grey;
+        
+      }
+    }
   }
-  &__box {
-    display: flex;
-    justify-content: space-between;
-  }
-  &__content {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-  &__logo {}
-  &__title {}
-  &__image {
-    flex: 0 1 690px;
-  }
-  &__img {}
-  &__menu {
-    margin-left: 56px;
-  }
-  &__menu-cart {}
-  &__menu-list {}
-  &__menu-item {}
-  &__menu-link {}
 }
-.container {
-}
-.accent {
-  background-color: $accent1;
-  color: #fff;
+
+@media (min-width: 768px) {
+  .header {
+    &__wrap {
+      max-width: 1400px;
+      margin: 0 auto;
+      background: linear-gradient(to right, $background 77.5%, $primary 77.5%)
+    }
+    &__box {
+      flex-direction: row;
+    }
+    &__content {
+      justify-content: space-between;
+      margin-left: 60px;
+      flex: 0 1 20%;
+      
+    }
+    &__logo {
+      @include adaptiv-value('padding-top', 72, 0, 1);
+    }
+    &__title-box{
+      position: relative;
+      @include adaptiv-value('margin-bottom', 64, 10, 1);
+    }
+    &__title {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      z-index: 1;
+      @include adaptiv-value('font-size', 54, 10, 1);
+      @include adaptiv-value('line-height', 70, 0, 1);
+    }
+    &__image {
+      position: relative;
+      flex: 0 0 57.5%;
+      padding: 0 0 64% 0;
+    }
+    &__img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      object-fit: cover;
+    }
+    &__menu {
+      display: block;
+      padding-right: 11px;
+      @include adaptiv-value('padding-left', 55, -15, 1);
+      @include adaptiv-value('padding-top', 89, 0, 1);
+    }
+    &__menu-cart {
+      position: relative;
+      display: inline-block;
+      @include adaptiv-value('margin-bottom', 120, 0, 1);
+      svg path {
+        fill: #F9FBFF;
+      }
+    }
+    @media (any-hover: hover) {
+      &__menu-cart:hover {
+        cursor: pointer;
+        svg path{
+          fill: $accent1;
+        }
+      }
+    }
+    &__menu-counter {
+      position: absolute;
+      top: 0;
+      right: 0;
+      transform: translate(75%, -75%);
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background-color: $accent1;
+      color: #F9FBFF;
+      text-align: center;
+      font-size: 14px;
+      line-height: 19px;
+      // display: none;
+    }
+    &__menu-list {
+      :not(:last-child) {
+        @include adaptiv-value('margin-bottom', 30, 0, 1);
+      }
+    }
+    &__menu-item {
+      padding: 0;
+      transition: all .3s ease;
+    }
+    @media (any-hover: hover) {
+        &__menu-item:hover {
+        font-weight: 700;
+      }
+    }
+    
+    &__menu-link {
+      line-height: 150%;
+      @include adaptiv-value('font-size', 16, 0, 1);
+    }
+    &__menu-burger{
+      display: none;
+    }
+  }
 }

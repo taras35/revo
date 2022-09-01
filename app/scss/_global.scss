@@ -1,7 +1,14 @@
 html,
 body {
 	height: 100%;
-	background-color: #F9FBFF;
+	background-color: $background;
+}
+
+body {
+	font-family: 'Nunito Sans';
+	font-size: 16px;
+	line-height: 137%;
+	font-weight: 300;
 }
 
 .wrapper {
@@ -26,6 +33,18 @@ body {
 .title {
 	color: $primary;
 	font-family: $montserrat;
+	font-weight: 900;
+	font-size: 30px;
+	line-height: 113%;
+}
+
+.accent {
+  background-color: $accent1;
+  color: #fff;
+}
+
+path {
+	transition: all .3s ease-in-out;
 }
 
 
