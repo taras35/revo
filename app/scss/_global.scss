@@ -6,7 +6,7 @@ body {
 }
 
 body {
-	font-family: 'Nunito Sans';
+	font-family: $nunito;
 	font-size: 16px;
 	line-height: 137%;
 	font-weight: 300;
@@ -37,6 +37,26 @@ body {
 	font-weight: 900;
 	font-size: 30px;
 	line-height: 113%;
+	text-transform: uppercase;
+}
+
+.suptitle {
+	color: $primary;
+	font-family: $nunito;
+	font-weight: 600;
+	font-size: 20px;
+	line-height: 120%;
+}
+
+.subtitle {
+	font-weight: 700;
+	font-size: 24px;
+	line-height: 28px;
+	color: #232C38;
+}
+
+.text {
+	color: $dark-grey;
 }
 
 .accent {

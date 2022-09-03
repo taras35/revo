@@ -3,13 +3,6 @@ $(function () {
     $('.header__menu-burger,.header__nav').toggleClass('active');
   });
 
-  // if ($(window).width() < 769) {
-  //   $('.header__logo').appendTo($('.header__mob-container .container'))
-  //   $('.header__menu').appendTo($('.header__mob-container .container'))
-  //   // $('.header__content').appendTo($('.header__image'))
-  // }
-
-
 })
 
 const headerMobile = document.querySelector('.header__mob-container');

@@ -6,10 +6,7 @@
 
 @media (min-width: 319px) {
   .header {
-    
-    @media (max-width: 689px) {
-        
-      }
+    @include adaptiv-value('margin-bottom', 87, 20, 1);
     &__wrap {
       position: relative;
       // z-index: 2;
@@ -378,4 +375,66 @@
       display: none;
     }
   }
+}
+
+@media (min-width: 319px) {
+  .coffee {
+    @include adaptiv-value('padding-bottom', 129, 30, 1);
+    &__titles {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    &__suptitle {
+      margin-bottom: 8px;
+    }
+    &__title {
+      margin-bottom: 72px;
+      @include adaptiv-value('margin-bottom', 72, 20, 1);
+      text-align: center;
+    }
+    &__items {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: 15px;
+      row-gap: 15px;
+    }
+    &__item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: start;
+    }
+    &__image {}
+    &__item-title {}
+    &__item-text {
+      text-align: center;
+    }
+  }
+}
+
+@media (min-width: 769px) {
+  .coffee {
+    &__titles {}
+    &__suptitle {}
+    &__title {}
+    &__items {
+      grid-template-columns: repeat(4, 1fr);
+      column-gap: 66px;
+      row-gap: 40px;
+    }
+    &__item {}
+    &__image {}
+    &__item-title {}
+    &__item-text {}
+  }
+}
+
+@media (min-width: 319px) {
+  
+}
+
+@media (min-width: 767px) {
+
 }
