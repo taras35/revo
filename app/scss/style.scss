@@ -72,7 +72,7 @@
     }
     &__box {
       display: flex;
-      justify-content: space-between;
+      // justify-content: space-between;
     }
     &__content {
       display: flex;
@@ -126,8 +126,8 @@
       
     }
     &__menu {
-      display: flex;
-      align-items: center;
+      // display: flex;
+      // align-items: center;
       // order: 2;
     }
     &__menu-cart {
@@ -272,7 +272,7 @@
       justify-content: start;
     }
     &__mob-wrap {
-      @include adaptiv-value('padding-top', 76, 0, 1);
+      padding-top: 76px;
       transition: all .5s ease-out;
     }
     &__mob-wrap::before {
@@ -286,8 +286,6 @@
     &__content {
       margin-left: 60px;
       flex: 0 1 20%;
-      position: static;
-      padding: 0;
       // order: 0;
     }
     &__logo {
