@@ -387,10 +387,9 @@
       justify-content: center;
     }
     &__suptitle {
-      margin-bottom: 8px;
+      @include adaptiv-value('margin-bottom', 8, 0, 1);
     }
     &__title {
-      margin-bottom: 72px;
       @include adaptiv-value('margin-bottom', 72, 20, 1);
       text-align: center;
     }
@@ -406,8 +405,16 @@
       align-items: center;
       justify-content: start;
     }
-    &__image {}
-    &__item-title {}
+    &__image {
+      @include adaptiv-value('margin-bottom', 35, 7, 1);
+    }
+    &__image.margin-fix{
+      @include adaptiv-value('margin-bottom', 37, 9, 1);
+    }
+    &__item-title {
+      text-align: center;
+      @include adaptiv-value('margin-bottom', 12, 5, 1);
+    }
     &__item-text {
       text-align: center;
     }
