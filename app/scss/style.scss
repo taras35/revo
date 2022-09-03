@@ -88,7 +88,7 @@
     &__logo {
       position: relative;
       z-index: 24;
-      
+      flex: 0 0 77%
     }
     &__logo-img {
       
@@ -131,7 +131,6 @@
       // order: 2;
     }
     &__menu-cart {
-      margin-right: 30px;
       svg path {
          fill: $primary; 
       }
@@ -173,6 +172,7 @@
     }
     &__nav.active {
       right: 0;
+      z-index: 2;
     }
     &__menu-list {
       :not(:last-child) {
@@ -193,6 +193,7 @@
       width: 25px;
       height: 20px;
       margin-bottom: 5px;
+      margin-left: 20px;
       span {
         transition: all .6s ease;
         position: absolute;
@@ -241,24 +242,48 @@
 
 @media (min-width: 769px) {
   .header {
+    
     &__wrap {
       max-width: 1400px;
       margin: 0 auto;
-      background: linear-gradient(to right, $background 77.5%, $primary 77.5%);
-      position: static;
+      // background: linear-gradient(to right, $background 77.5%, $primary 77.5%);
       padding: 0;
     }
     &__mob-container {
-      display: none;
+      min-height: 80px;
+      
+      &.scroll {
+        .header__mob-wrap {
+          padding: 10px 0;
+          background-color: rgba(199, 160, 122, 0.632);
+        }
+        .header__menu-cart {
+
+        }
+        .header__menu-counter {
+          width: 20px;
+          height: 20px;
+          font-size: 14px;
+          line-height: 19px;
+        }
+      }
     }
+    &__mob-container .container {
+      justify-content: start;
+    }
+    &__mob-wrap {
+      @include adaptiv-value('padding-top', 76, 0, 1);
+      transition: all .5s ease-out;
+    }
+    &__mob-wrap::before {
+      background-color: transparent;
+    }
+
     &__box {
       flex-direction: row;
       justify-content: start;
     }
     &__content {
-      flex-direction: column;
-      justify-content: space-between;
-      align-items: start;
       margin-left: 60px;
       flex: 0 1 20%;
       position: static;
@@ -266,10 +291,11 @@
       // order: 0;
     }
     &__logo {
-      @include adaptiv-value('padding-top', 72, 0, 1);
+      margin-left: 60px;
+      
     }
     &__title-box{
-      // position: relative;
+      align-self: flex-end;
       @include adaptiv-value('margin-bottom', 64, 10, 1);
     }
     &__title {
@@ -294,11 +320,25 @@
       display: block;
       padding-right: 11px;
       @include adaptiv-value('padding-left', 55, -15, 1);
-      @include adaptiv-value('padding-top', 89, 0, 1);
+      @include adaptiv-value('padding-top', 230, 0, 1);
       // order: 0;
+      //вариант без градиента
+      position: relative;
+      z-index: 1;
+    }
+    //вариант без градиента
+    &__menu::before {
+      content: '';
+      position: absolute;
+      z-index: -1;
+      top: 0;
+      left: 0;
+      height: 100%;
+      background-color: $primary;
+      width: 1000%;
     }
     &__menu-cart {
-      @include adaptiv-value('margin-bottom', 120, 0, 1);
+      @include adaptiv-value('margin-left', 55, -15, 1);
       svg path {
         fill: #F9FBFF;
       }
