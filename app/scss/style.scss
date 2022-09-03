@@ -98,6 +98,7 @@
     &__title {
       // position: absolute;
       // @include adaptiv-value('font-size', )
+      text-align: left;
       @include adaptiv-value('font-size', 60, 35, 1);
       @include adaptiv-value('line-height', 70, 50, 1);
     }
@@ -391,7 +392,7 @@
     }
     &__title {
       @include adaptiv-value('margin-bottom', 72, 20, 1);
-      text-align: center;
+      
     }
     &__items {
       display: grid;
@@ -439,7 +440,29 @@
 }
 
 @media (min-width: 319px) {
-  
+  .choose {
+    @include adaptiv-value('padding-top', 90, 20, 1);
+    @include adaptiv-value('padding-bottom', 127, 20, 1);
+    &__titles {}
+    &__suptitle {}
+    &__title {}
+    &__slider {}
+    &__item {
+      display: flex;
+    }
+    &__image {}
+    &__img {}
+    &__content {}
+    &__price {}
+    &__subtitle {
+      span {
+        text-transform: uppercase;
+      }
+    }
+    &__text {}
+    &__buttons {}
+    &__button {}
+  }
 }
 
 @media (min-width: 767px) {

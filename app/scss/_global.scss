@@ -38,6 +38,7 @@ body {
 	font-size: 30px;
 	line-height: 113%;
 	text-transform: uppercase;
+	text-align: center;
 }
 
 .suptitle {
@@ -46,6 +47,7 @@ body {
 	font-weight: 600;
 	font-size: 20px;
 	line-height: 120%;
+	text-align: center;
 }
 
 .subtitle {
@@ -64,9 +66,20 @@ body {
   color: #fff;
 }
 
+.text-accent {
+	color: $accent1;
+}
+
 path {
 	transition: all .3s ease-in-out;
 }
+
+
+
+.btn {
+	
+}
+
 
 
 
