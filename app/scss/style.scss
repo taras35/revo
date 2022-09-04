@@ -528,9 +528,14 @@
     }
     &__suptitle {}
     &__title {}
-    &__slider {}
-    &__item {
+    &__slider {
       display: flex;
+      overflow: scroll;
+      // grid-template-columns: repeat(2, 560px);
+      // grid-template-rows: repeat(3, 256px);
+    }
+    &__item {
+      flex: 0 0 auto;
       flex-direction: row;
     }
     &__image {
