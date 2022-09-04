@@ -304,7 +304,7 @@
     }
     &__image {
       position: relative;
-      z-index: 0;
+      // z-index: 0;
       flex: 0 0 57.5%;
       padding: 0 0 64% 0;
       // order: 0;
@@ -380,7 +380,7 @@
 
 @media (min-width: 319px) {
   .coffee {
-    @include adaptiv-value('padding-bottom', 129, 30, 1);
+    @include adaptiv-value('padding-bottom', 129, 15, 1);
     &__titles {
       display: flex;
       flex-direction: column;
@@ -407,16 +407,28 @@
       justify-content: start;
     }
     &__image {
-      @include adaptiv-value('margin-bottom', 35, 7, 1);
+      &:not(:last-child) {
+        @include adaptiv-value('margin-bottom', 35, 7, 1);
+      }
+      
     }
     &__image.margin-fix{
-      @include adaptiv-value('margin-bottom', 37, 9, 1);
+      &:not(:last-child) {
+        @include adaptiv-value('margin-bottom', 37, 9, 1);
+      }
+      
     }
     &__item-title {
+      &:not(:last-child) {
+        @include adaptiv-value('margin-bottom', 12, 5, 1);
+      }
       text-align: center;
-      @include adaptiv-value('margin-bottom', 12, 5, 1);
+      
     }
     &__item-text {
+      &:not(:last-child) {
+        @include adaptiv-value('margin-bottom', 12, 5, 1);
+      }
       text-align: center;
     }
   }
@@ -443,28 +455,112 @@
   .choose {
     @include adaptiv-value('padding-top', 90, 20, 1);
     @include adaptiv-value('padding-bottom', 127, 20, 1);
-    &__titles {}
+    &__titles {
+      @include adaptiv-value('margin-bottom', 72, 15, 1);
+    }
     &__suptitle {}
     &__title {}
     &__slider {}
     &__item {
       display: flex;
+      flex-direction: column;
+      
     }
-    &__image {}
-    &__img {}
-    &__content {}
-    &__price {}
+    &__image {
+      background-color: $light-grey;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    &__img {
+
+    }
+    &__content {
+      @include adaptiv-value('padding', 42, 10, 1);
+      background-color: #fff;
+    }
+    &__price {
+      &:not(:last-child) {
+        @include adaptiv-value('margin-bottom', 8, 5, 1);
+      }
+    }
     &__subtitle {
       span {
         text-transform: uppercase;
       }
+      &:not(:last-child) {
+        @include adaptiv-value('margin-bottom', 24, 5, 1);
+      }
     }
-    &__text {}
-    &__buttons {}
-    &__button {}
+    &__text {
+      &:not(:last-child) {
+        @include adaptiv-value('margin-bottom', 40, 12, 1);
+      }
+    }
+    &__buttons {
+      &:not(:last-child) {
+        @include adaptiv-value('margin-bottom', 18, 8, 1);
+      }
+      display: flex;
+      font-weight: 700;
+    }
+    &__button {
+      flex: 0 0 50%;
+      border: none;
+      padding: 5px 24px;
+    }
+    &__button-link {
+      flex: 0 0 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: $primary;
+    }
   }
 }
 
 @media (min-width: 767px) {
+  .choose {
+    @include adaptiv-value('padding-top', 90, 20, 1);
+    @include adaptiv-value('padding-bottom', 127, 20, 1);
+    &__titles {
+      @include adaptiv-value('margin-bottom', 72, 15, 1);
+    }
+    &__suptitle {}
+    &__title {}
+    &__slider {}
+    &__item {
+      display: flex;
+      flex-direction: row;
+    }
+    &__image {
+    display: block;
+    }
+    &__img {
 
+    }
+    &__content {
+    
+    }
+    &__price {
+    
+    }
+    &__subtitle {
+    
+    }
+    &__text {
+    
+    }
+    &__buttons {
+    width: 240px;
+    }
+    &__button {
+      flex: 0 0 auto;
+    }
+    &__button-link {
+      flex: 0 1 100%;
+      // margin-left: 33px;
+      // margin-right: 8px;
+    }
+  }
 }
