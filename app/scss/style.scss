@@ -461,7 +461,7 @@
     &__suptitle {}
     &__title {}
     &__slider {}
-    &__item {
+    &__item-inner {
       display: flex;
       flex-direction: column;
       
@@ -519,12 +519,62 @@
   }
 }
 
-@media (min-width: 767px) {
+@media (min-width: 769px) {
   .choose {
     @include adaptiv-value('padding-top', 90, 20, 1);
     @include adaptiv-value('padding-bottom', 127, 20, 1);
+    .slick-list {
+      overflow: visible;
+      
+    }
+    .slick-track {
+      display: flex;
+      justify-content: start;
+    }
+    .slick-slide {
+      
+    }
+    // .slick-slide[aria-hidden="true"] div{
+    //   position: relative;
+      
+    //   &::after {
+    //     content: '';
+    //     position: absolute;
+    //     z-index: 2;
+    //     background-color: $background;
+    //     top: 0;
+    //     left: 0;
+    //     width: 100%;
+    //     height: 100%;
+    //     opacity: .3;
+    //     ;
+    //   }
+    // }
+    
+    .slick-slide > div:first-child {
+      margin-bottom: 32px;
+    }
+    .slick-prev {
+      display: none!important;
+    }
+    .slick-next {
+      position: absolute;
+      top: 50%;
+      right: 0;
+      transform: translateY(-50%);
+      font-size: 0;
+      width: 48px;
+      height: 48px;
+      background-color: $accent1;
+      border: none;
+      border-radius: 50%;
+      background-image: url(../images/choose/arrow-next.svg);
+      background-repeat: no-repeat;
+      background-size: 24px 17px;
+      background-position: center;
+    }
     &__titles {
-      @include adaptiv-value('margin-bottom', 72, 15, 1);
+      // @include adaptiv-value('margin-bottom', 72, 15, 1);
     }
     &__suptitle {}
     &__title {}
@@ -533,8 +583,35 @@
       // overflow: scroll;
       // grid-template-columns: repeat(2, 560px);
       // grid-template-rows: repeat(3, 256px);
+      position: relative;
+      &::before {
+        content: '';
+        position: absolute;
+        z-index: 2;
+        background-color: $background;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+      }
+      &::after {
+        content: '';
+        position: absolute;
+        z-index: 2;
+        background-color: $background;
+        top: 0;
+        right: -100%;
+        width: 100%;
+        height: 100%;
+        opacity: .3;
+      }
     }
-    &__item {
+    
+    &__slider-wrapper {
+      overflow: visible;
+      position: relative;
+    }
+    &__item-inner {
       flex: 0 0 auto;
       flex-direction: row;
     }
@@ -554,7 +631,10 @@
     
     }
     &__text {
-    
+    max-height: 38px;
+    overflow-y: auto;
+    height: 100%;
+    line-height: 110%;
     }
     &__buttons {
     width: 240px;
