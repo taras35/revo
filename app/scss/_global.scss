@@ -79,7 +79,29 @@ path {
 	cursor: pointer;
 }
 
-
+.slick-next {
+	position: absolute;
+	top: 50%;
+	right: 0;
+	transform: translateY(-50%);
+	font-size: 0;
+	@include adaptiv-value('width', 48, 20, 1);
+	@include adaptiv-value('height', 48, 20, 1);
+	// width: 48px;
+	// height: 48px;
+	background-color: $accent1;
+	border: none;
+	border-radius: 50%;
+	background-image: url(../images/choose/arrow-next.svg);
+	background-repeat: no-repeat;
+	background-size: 24px 17px;
+	background-position: center;
+	cursor: pointer;
+	transition: all .3s ease-out;
+}
+.slick-next:active {
+	background-color: #b78c60;
+}
 
 
 
