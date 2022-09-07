@@ -103,7 +103,32 @@ path {
 	background-color: #b78c60;
 }
 
+.slick-dots li button {
+	padding: 0;
+	border: none;
+}
 
+li.slick-active {
+	background-color: $primary;
+}
+
+ul.slick-dots {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	font-size: 0;
+	padding-top: 10px;
+}
+.slick-dots li {
+	width: 10px;
+	height: 10px;
+	border: 1px solid $primary;
+	border-radius: 50%;
+	&:not(:last-child) {
+		margin-right: 8px;
+	}
+}
 
 
 
