@@ -154,6 +154,7 @@
     }
     &__nav {
       position: fixed;
+      z-index: 2;
       top: 0;
       right: -100%;
       height: 100%;
@@ -170,7 +171,6 @@
     }
     &__nav.active {
       right: 0;
-      z-index: 2;
     }
     &__menu-list {
       :not(:last-child) {
@@ -233,9 +233,6 @@
       overflow: hidden;
     }
   }
-  // .main{
-  //   @include adaptiv-value('padding-top', 858, 376, 1)
-  // }
 }
 
 @media (min-width: 769px) {
@@ -517,7 +514,7 @@
     }
     &__button {
       flex: 0 0 50%;
-      border: none;
+      
       padding: 5px 24px;
     }
     &__button-link {
@@ -532,9 +529,6 @@
 
 @media (min-width: 769px) {
   .choose {
-    // background-color: $background;
-    @include adaptiv-value('padding-top', 90, 20, 1);
-    @include adaptiv-value('padding-bottom', 127, 20, 1);
     background: linear-gradient(to right, $primary max(calc(((100vw - 1230px) / 2) + 260px), 25%), $background max(calc(((100vw - 1230px) / 2) + 260px), 25%));
     // position: relative;
     // &::before {
@@ -658,6 +652,155 @@
       // margin-left: 33px;
       // margin-right: 8px;
     }
+  }
+}
+
+@media (min-width: 319px) {
+  .giftset {
+    @include adaptiv-value('padding-top', 90, 20, 1);
+    @include adaptiv-value('padding-bottom', 127, 20, 1);
+    background-color: $background;
+    &__titles {
+      @include adaptiv-value('margin-bottom', 68, 15, 1);
+    }
+    &__suptitle {}
+    &__title {}
+    &__tabs {
+      display: flex;
+      flex-direction: column;
+    }
+    &__triggers {
+      display: flex;
+      font-family: $montserrat;
+      font-size: 30px;
+      line-height: 113%;
+      
+      
+      a {
+        color: $primary;
+      }
+    }
+    &__trigger-item {
+      flex: 1 1 100%;
+      text-align: center;
+      background-color: $light-grey;
+      opacity: .3;
+      padding: 12px;
+      transition: all .3s ease-out;
+    }
+    &__trigger-item--active {
+      background-color: white;
+      opacity: 1;
+    }
+    &__content {
+      background-color: white;
+      padding-top: 5px;
+    }
+    &__content-item {
+      // opacity: 0;
+      display: none;
+      // // visibility: hidden;
+      // transform: scale(0);
+      transition: all .3s ease-out;
+    }
+    &__content-item--active {
+      // opacity: 1;
+      display: block;
+      // visibility: visible;
+      // transform: scale(1);
+    }
+    &__item-inner {
+      display: flex;
+      flex-direction: column;
+    }
+    &__image {}
+    &__img {}
+    &__descr {
+      display: flex;
+      flex-direction: column;
+    }
+    &__price {}
+    &__subtitle {}
+    &__text {}
+    &__about-coffee {
+      display: flex;
+      color: $primary;
+    }
+    &__type {
+      display: flex;
+      flex: 1 1 60%;
+    }
+    &__image-coffee {}
+    &__type-descr {}
+    &__type-title {}
+    &__type-text {
+      font-weight: 600;
+    }
+    &__place {
+      display: flex;
+      flex: 1 1 40%;
+    }
+    &__image-mountain {}
+    &__place-descr {}
+    &__place-title {}
+    &__place-text {
+      font-weight: 600;
+    }
+    &__buttons {
+      &:not(:last-child) {
+        @include adaptiv-value('margin-bottom', 18, 8, 1);
+      }
+      display: flex;
+      font-weight: 700;
+    }
+    &__button {
+      flex: 0 0 50%;
+      
+      padding: 5px 24px;
+    }
+    &__button-link {
+      flex: 0 0 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: $primary;
+    }
+  }
+}
+
+@media (min-width: 769px) {
+  .giftset {
+    background: linear-gradient(to left, $background max(calc(((100vw - 1230px) / 2) + 260px), 25%), $light-grey max(calc(((100vw - 1230px) / 2) + 260px), 25%));
+
+    &__titles {}
+    &__suptitle {}
+    &__title {}
+    &__tabs {}
+    &__triggers {}
+    &__trigger-item {}
+    &__content {}
+    &__content-item {}
+    &__item-inner {}
+    &__image {}
+    &__img {}
+    &__descr {}
+    &__price {}
+    &__subtitle {}
+    &__text {}
+    &__about-coffee {}
+    &__type {}
+    &__image-coffee {}
+    &__type-descr {}
+    &__type-title {}
+    &__type-text {}
+    &__place {}
+    &__image-mountain {}
+    &__place-descr {}
+    &__place-title {}
+    &__place-text {}
+    &__buttons {}
+    &__button {}
+    &__button-link {}
   }
 }
 

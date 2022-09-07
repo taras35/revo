@@ -1,7 +1,12 @@
 $(document).ready(function () {
-  $('.header__menu-burger').click(function(event) {
+
+  //header
+
+  $('.header__menu-burger').click(function() {
     $('.header__menu-burger,.header__nav').toggleClass('active');
   });
+
+  //choose
 
   $('.choose__slider-wrapper').slick({
     mobileFirst: true,
@@ -23,7 +28,23 @@ $(document).ready(function () {
       },
     ],
   });
-})
+
+  //giftset
+
+  $('.giftset__trigger-item').click(function(e) {
+    e.preventDefault();
+
+    $('.giftset__trigger-item').removeClass('giftset__trigger-item--active');
+    $('.giftset__content-item').removeClass('giftset__content-item--active');
+
+    $(this).addClass('giftset__trigger-item--active');
+    $($(this).attr('href')).addClass('giftset__content-item--active');
+  });
+
+  $('.giftset__trigger-item:first').click();
+
+
+});
 
 //Добавить класс хедеру при скролле
 
