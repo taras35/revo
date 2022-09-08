@@ -698,16 +698,18 @@
     }
     &__content-item {
       // opacity: 0;
-      display: none;
-      // // visibility: hidden;
-      // transform: scale(0);
+      // display: none;
+      // visibility: hidden;
+      height: 0;
+      transform: scale(0);
       transition: all .3s ease-out;
     }
     &__content-item--active {
       // opacity: 1;
-      display: block;
+      // display: block;
       // visibility: visible;
-      // transform: scale(1);
+      height: auto;
+      transform: scale(1);
     }
     &__item-inner {
       display: flex;
