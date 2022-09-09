@@ -78,6 +78,11 @@ path {
 	border-radius: 19px;
 	cursor: pointer;
 	border: none;
+	transition: all .3s ease-out;
+}
+
+.btn:hover {
+	opacity: .7;
 }
 
 button.btn {
