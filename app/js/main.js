@@ -85,16 +85,92 @@ window.addEventListener('DOMContentLoaded', () => {
 
   // Ограничеение текста в combo__text
 
-  function truncate(el, maxSize = 72) {
+  let text = {
+    first: 'Hàm lượng caffein trong Revo Đậm Đà đủ mạnh để làm bạn tỉnh táo làm việc caffein trong Revo Đậm Đà đủ mạnh để làm bạn tỉnh táo, tập trung làm việc. Bạn có thể chọn uống đắng nếu quen vị cà phê đắng đậm – nhưng đủ yên tâm vì chắc chắn Revo Đậm Đà không chứa bất kỳ một loại hương liệu nào.',
+    second: 'Revo Everyday được phối trộn giữa vị đắng của hạt Robusta và hương thơm bạn có thể quyện vị đắng của Revo Đậm Đà cùng với vị ngọt béo của sữa đặc theo tỷ lệ phù hợp để tự pha một ly cà phê sữa đá thơm ngon.',
+    third: 'Honey – trong tên gọi Revo Honey đến từ phương pháp chế biến hạt Arabica pháp chế biến này không phải cho mật ong vào cà phê, mà là hạt cà phê Arabica sau khi được tách vỏ, giữ lại “lớp thịt” trên hạt với độ ngọt cao, khi phơi khô sẽ để lại màu nâu đỏ đặc trưng của mật ong với vị chua nhẹ như trái cây họ táo và hậu vị kéo dài.',
+    fourth: 'Revo Natural là dòng cà phê đặc biệt của Revo Coffee dành riêng. Ở Việt Nam, vùng Cầu Đất – Đà Lạt được nhiều chuyên gia cà phê thế giới thẩm định là vùng trồng cà phê Arabica ngon nhất Việt Nam. Và những hạt cà phê Arabica của Revo Origin được trồng từ mảnh đất đó.',
+  };
+
+
+  function truncate(el, maxSize = 71) {
     let str = el.textContent;
+    console.log(el.clientWidth)
     str.length > maxSize ? el.textContent = str.slice(0, maxSize) + '...' : el.textContent = str
   }
 
-  for (let el of document.querySelectorAll('.combo__text')) {
-    truncate(el)
-  }
+  truncate(document.querySelectorAll('.combo__text')[2])
+
+  // function addFullText(el) {
+  //   for (let item of document.querySelectorAll('.combo__item')) {
+  //     el.textContent = text[item.id]
+  //   }
+  // }
+
+  // for (let el of document.querySelectorAll('.combo__text')) {
+  //   truncate(el)
+  // }
+
+  // window.addEventListener("resize", function() {
+  //   if (window.innerWidth > 768) {
+  //     for (let el of document.querySelectorAll('.combo__text')) {
+  //       truncate(el)
+  //     }
+  //   } else {
+  //       for (let el of document.querySelectorAll('.combo__text')) {
+  //         addFullText(el)
+  //       }
+  //   }
+  // });
+
+  // if (window.innerWidth > 768) {
+  //   for (let el of document.querySelectorAll('.combo__text')) {
+  //     truncate(el)
+  //   }
+  // }
 
   // popup combo
 
+  function addNodeInModal(el) {
+    let duplicateNode = el.cloneNode(true);
+    document.querySelector('.modal__inner').innerHTML = '';
+    document.querySelector('.modal__inner').append(duplicateNode);
+    document.querySelector('.modal__inner .combo__text').innerHTML = text[el.id];
+  }
+
+  function openModal(e) {
+    if (e.target.closest('.combo__item') && !e.target.closest('.combo__buttons')) {
+      document.querySelector('.modal').classList.add('visible');
+      addNodeInModal(e.target.closest('.combo__item'))
+    }
+  }
+
+
+
+  window.addEventListener("resize", function() {
+    if (window.innerWidth < 769) {
+      document.querySelector('.combo__slider').removeEventListener('click', openModal)
+    } else {
+      document.querySelector('.combo__slider').addEventListener('click', openModal);
+    }
+  });
+  if (window.innerWidth > 768) {
+    document.querySelector('.combo__slider').addEventListener('click', openModal);
+  }
   
-})
+  //закрытие по области и крестику
+  document.querySelector('.modal').addEventListener('click', (e) => {
+    if (e.target.closest('.modal__close') || !e.target.closest('.modal__inner')) {
+      document.querySelector('.modal').classList.remove('visible');
+    }
+  });
+  //закрытие по области по Esc
+  window.addEventListener('keydown', (e) => {
+    if (e.keyCode == 27) {
+      document.querySelector('.modal').classList.remove('visible');
+    }
+  });
+
+  
+
+});
