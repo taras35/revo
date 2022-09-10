@@ -997,6 +997,7 @@
       }
     }
     &__text {
+      line-height: 22px;
       &:not(:last-child) {
         margin-bottom: 32px;
       }
@@ -1097,6 +1098,13 @@
     }
     &__text {
       @include adaptiv-value('font-size', 16, 10, 1);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2; /* number of lines to show */
+      line-height: 22px;        /* fallback */
+      max-height: calc(22px * 2); 
       &:not(:last-child) {
         @include adaptiv-value('margin-bottom', 32, 0, 1);
       }
