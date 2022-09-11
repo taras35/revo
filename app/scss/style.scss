@@ -154,7 +154,7 @@
     }
     &__nav {
       position: fixed;
-      z-index: 2;
+      z-index: 4;
       top: 0;
       right: -100%;
       height: 100%;
@@ -168,6 +168,9 @@
         width: 50%;
       }
       
+    }
+    &__nav-duplicate {
+      display: none;
     }
     &__nav.active {
       right: 0;
@@ -266,6 +269,7 @@
     }
     &__mob-container .container {
       justify-content: start;
+      align-items: center;
     }
     &__mob-wrap {
       padding-top: 76px;
@@ -351,6 +355,24 @@
       height: auto;
       padding: 0;
     }
+    &__nav-duplicate {
+      display: block;
+      position: fixed;
+      z-index: 4;
+      top: 0;
+      right: -100%;
+      height: 100%;
+      width: 30%;
+      background-color: $primary;
+      padding: 70px 20px;
+      transition: all .6s ease-out;
+      @include adaptiv-value('padding-left', 55, -15, 1);
+      @include adaptiv-value('padding-top', 130, 0, 1);
+      overflow: auto;
+    }
+    &__nav-duplicate.active {
+      right: 0;
+    }
     &__menu-list {
       :not(:last-child) {
         @include adaptiv-value('margin-bottom', 30, 0, 1);
@@ -371,7 +393,8 @@
       @include adaptiv-value('font-size', 16, 0, 1);
     }
     &__menu-burger{
-      display: none;
+      // display: none;
+      margin-left: 55px;
     }
   }
 }
