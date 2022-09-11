@@ -5,6 +5,16 @@ $(document).ready(function () {
     $('.header__menu-burger,.header__nav').toggleClass('active');
   });
 
+  // scroll to #
+
+  var $page = $('html, body');
+  $('a[href*="#"]').click(function() {
+    $page.animate({
+      scrollTop: $($.attr(this, 'href')).offset().top
+    }, 400);
+    return false;
+  });
+
   //choose
 
   $('.choose__slider-wrapper').slick({
@@ -82,16 +92,20 @@ window.addEventListener('DOMContentLoaded', () => {
 
   headerObserver.observe(headerMobile);
 
-  // Ограничеение текста в combo__text
-
-
   // popup combo
+
+  // let text = {
+  //   first: 'Hàm lượng caffein trong Revo Đậm Đà đủ mạnh để làm bạn tỉnh táo làm việc caffein trong Revo Đậm Đà đủ mạnh để làm bạn tỉnh táo, tập trung làm việc. Bạn có thể chọn uống đắng nếu quen vị cà phê đắng đậm – nhưng đủ yên tâm vì chắc chắn Revo Đậm Đà không chứa bất kỳ một loại hương liệu nào.',
+  //   second: 'Revo Everyday được phối trộn giữa vị đắng của hạt Robusta và hương thơm bạn có thể quyện vị đắng của Revo Đậm Đà cùng với vị ngọt béo của sữa đặc theo tỷ lệ phù hợp để tự pha một ly cà phê sữa đá thơm ngon.',
+  //   third: 'Honey – trong tên gọi Revo Honey đến từ phương pháp chế biến hạt Arabica pháp chế biến này không phải cho mật ong vào cà phê, mà là hạt cà phê Arabica sau khi được tách vỏ, giữ lại “lớp thịt” trên hạt với độ ngọt cao, khi phơi khô sẽ để lại màu nâu đỏ đặc trưng của mật ong với vị chua nhẹ như trái cây họ táo và hậu vị kéo dài.',
+  //   fourth: 'Revo Natural là dòng cà phê đặc biệt của Revo Coffee dành riêng. Ở Việt Nam, vùng Cầu Đất – Đà Lạt được nhiều chuyên gia cà phê thế giới thẩm định là vùng trồng cà phê Arabica ngon nhất Việt Nam. Và những hạt cà phê Arabica của Revo Origin được trồng từ mảnh đất đó.',
+  // }
 
   function addNodeInModal(el) {
     let duplicateNode = el.cloneNode(true);
     document.querySelector('.modal__inner').innerHTML = '';
     document.querySelector('.modal__inner').append(duplicateNode);
-    document.querySelector('.modal__inner .combo__text').innerHTML = text[el.id];
+    // document.querySelector('.modal__inner .combo__text').innerHTML = text[el.id];
   }
 
   function openModal(e) {
