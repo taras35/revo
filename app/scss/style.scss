@@ -607,11 +607,8 @@
       &::after {
         content: '';
         position: absolute;
-        z-index: 2;
+        // z-index: 0;
         background-color: $background;
-        // @media (max-width:) {
-          
-        // }
         top: 0;
         right: -1000%;
         width: 1000%;
@@ -1078,7 +1075,6 @@
       &::after {
         content: '';
         position: absolute;
-        z-index: 2;
         background-color: $background;
         top: 0;
         right: -1000%;

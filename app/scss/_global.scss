@@ -141,6 +141,22 @@ ul.slick-dots {
 	}
 }
 
+// .slick-slide:not(.slick-active) .choose__item {
+// 	position: relative;
+// 	transition: all .3s ease-out;
+// 	&::after {
+// 	content: '';
+// 	position: absolute;
+// 	z-index: 2;
+// 	background-color: $background;
+// 	top: 0;
+// 	left: 0;
+// 	width: 100%;
+// 	height: 100%;
+// 	opacity: .3;
+// }
+// }
+
 .modal {
 	position: fixed;
 	top: 0;
