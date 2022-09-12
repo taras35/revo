@@ -150,6 +150,8 @@
       font-size: 14px;
       line-height: 19px;
       transition: all .3s ease-out;
+      // opacity: 0;
+      // visibility: hidden;
       // display: none;
     }
     &__nav {
@@ -190,6 +192,7 @@
     &__menu-burger{
       display: block;
       position: relative;
+      cursor: pointer;
       z-index: 24;
       width: 25px;
       height: 20px;
