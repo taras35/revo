@@ -238,36 +238,110 @@
       overflow: hidden;
     }
   }
+  // Корзина
   .header {
     &__cart-wrapper {
       // max-width: 460px;
-      width: auto;
-      height: auto;
+      width: 100%;
+      height: 100%;
+      padding: 60px 20px 10px;
+      @media (min-width: 519px) {
+        width: 60%;
+        height: 100%;
+      }
+      @media (min-width: 769px) {
+        width: 30%;
+        height: auto;
+      }
       background-color: $light-grey;
       position: fixed;
+      z-index: 2;
       top: 0;
       right: -100%;
       transition: all .3s ease-out;
+      
     }
     &__cart-wrapper.active {
       right: 0;
     }
     &__cart-inner {
       display: flex;
+      // flex-wrap: wrap;
       flex-direction: column;
+      @media (min-width: 769px) {
+        max-height: 60vh;
+      }
+      max-height: 80vh;
+      overflow: auto;
+      
     }
     &__cart-item {
       display: flex;
+      max-width: 400px;
+      width: 100%;
+      position: relative;
+      &:not(:last-child) {
+        margin-bottom: 20px;
+        ::after {
+          content: '';
+          position: absolute;
+          bottom: -15px;
+          left: 10%;
+          width: 80%;
+          height: 1px;
+          background: rgba(65, 81, 103, 0.548);
+        }
+      }
     }
-    &__cart-image {}
+    &__cart-image {
+      flex: 0 1 140px
+    }
     &__cart-img {}
     &__cart-descr {
       display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      align-items: center;
+      justify-items: start;
+      
     }
-    &__cart-title {}
-    &__cart-counter {}
+    &__cart-title {
+      grid-column-start: span 2;
+    }
+    &__cart-counter {
+      display: flex;
+      justify-self: start;
+      width: 80%;
+      border-radius: 4px;
+      background-color: #c4ccd9;
+    }
+    &__cart-counter > * {
+      font-size: 24px;
+      font-weight: 600;
+      padding: 2px;
+      flex: 0 0 33%;
+      cursor: pointer;
+      position: relative;
+      text-align: center;
+      &:not(:last-child)::after {
+          content: '';
+          position: absolute;
+          top: 10%;
+          left: 100%;
+          width: 1px;
+          height: 80%;
+          background: rgba(65, 81, 103, 0.548);
+        
+      }
+      
+    }
     &__cart-price {}
     &__cart-total {}   
+    &__cart-minus {}   
+    &__cart-count {
+      cursor: auto;
+    }   
+    &__cart-plus {}   
   }  
 }
 
@@ -378,7 +452,7 @@
       &__menu-cart:hover {
         cursor: pointer;
         svg path{
-          fill: #e0cfcf;
+          fill: $accent2;
         }
       }
     }

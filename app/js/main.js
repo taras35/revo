@@ -4,8 +4,14 @@ $(document).ready(function () {
   $('.header__menu-burger').click(function() {
     if (window.innerWidth > 768) {
       $('.header__menu-burger,.header__nav-duplicate').toggleClass('active');
+      // if ($('.header__cart-wrapper').hasClass('active')) {
+      //   $('.header__cart-wrapper').removeClass('active')
+      // }
     } else {
       $('.header__menu-burger,.header__nav').toggleClass('active');
+      // if ($('.header__cart-wrapper').hasClass('active')) {
+      //   $('.header__cart-wrapper').removeClass('active')
+      // }
     }
 
     if ($('.header__cart-wrapper').hasClass('active')) {
@@ -97,11 +103,40 @@ window.addEventListener('DOMContentLoaded', () => {
   for (let btn of btns) {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
-      // console.log('object');
-      document.querySelector('.header__menu-counter').textContent = `${++counter}`;
-      if (!document.querySelector('.header__menu-counter').classList.contains('visible'))
-      document.querySelector('.header__menu-counter').classList.add('visible');
+      counterIncrement();
+      createCartItem(e.target);
     });
+  }
+
+  function createCartItem(el) {
+    let item = el.closest('.item');
+    let imgSrc = item.querySelector('img').src;
+    let title = item.querySelector('.subtitle').textContent;
+    let price = item.querySelector('.price').childNodes[0].nodeValue;
+    let template = `<div class="header__cart-item">
+                      <div class="header__cart-image">
+                        <img class="header__cart-img" src="${imgSrc}" alt="coffee">
+                      </div>
+                      <div class="header__cart-descr">
+                        <p class="header__cart-title subtitle">${title}</p>
+                        <div class="header__cart-counter">
+                          <div class="header__cart-minus">-</div>
+                          <div class="header__cart-count"></div>
+                          <div class="header__cart-plus">+</div>
+                        </div>
+                        <p class="header__cart-price text-accent">${price}</p>
+                      </div>
+                    </div>`
+    document.querySelector('.header__cart-inner').insertAdjacentHTML('beforeend', template)
+  }
+
+  function counterIncrement() {
+    let menuCounter = document.querySelector('.header__menu-counter');
+
+    menuCounter.textContent = `${++counter}`;
+    if (!menuCounter.classList.contains('visible')) {
+      menuCounter.classList.add('visible');
+    }
   }
 
   //Добавить класс хедеру при скролле
