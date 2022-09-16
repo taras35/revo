@@ -20,5 +20,8 @@
     "jquery": "^3.5.1",
     "sass": "^1.54.5",
     "slick-carousel": "^1.8.1"
+  },
+  "dependencies": {
+    "jquery.maskedinput": "^1.4.1"
   }
 }

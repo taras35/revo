@@ -35,6 +35,22 @@ $(document).ready(function () {
     }
   });
 
+  $.fn.setCursorPosition = function(pos) {
+    if ($(this).get(0).setSelectionRange) {
+      $(this).get(0).setSelectionRange(pos, pos);
+    } else if ($(this).get(0).createTextRange) {
+      var range = $(this).get(0).createTextRange();
+      range.collapse(true);
+      range.moveEnd('character', pos);
+      range.moveStart('character', pos);
+      range.select();
+    }
+  };
+
+  $("#tel").click(function(){
+    $(this).setCursorPosition(6);
+  }).mask("(+84) 999 99 99 99")
+
   //choose
 
   $('.choose__slider-wrapper').slick({
@@ -107,6 +123,7 @@ window.addEventListener('DOMContentLoaded', () => {
       if (counterIncrement(e.target)) {
         createCartItem(e.target)
       }
+      calcCartTotal();
     }
   })
 
@@ -114,24 +131,33 @@ window.addEventListener('DOMContentLoaded', () => {
     let count;
     let menuCounter = document.querySelector('.header__menu-counter');
 
-    
-
     if (e.target.closest('.header__cart-minus') || e.target.closest('.header__cart-plus')) {
       count = e.target.closest('.header__cart-counter').querySelector('.header__cart-count');
     }
 
     if (e.target.closest('.header__cart-minus')) {
+      if (+count.innerText === 1) {
+        e.target.closest('.header__cart-item').remove();
+        menuCounter.textContent = `${--counter}`;
+      }
+
       if (+count.innerText > 1) {
         count.innerText = --count.innerText;
         menuCounter.textContent = `${--counter}`;
       }
     }
 
+    if (+menuCounter.textContent === 0) {
+      menuCounter.classList.remove('visible');
+    }
+
     if (e.target.closest('.header__cart-plus')) {
       count.innerText = ++count.innerText;
       menuCounter.textContent = `${++counter}`;
     }
-  })
+
+    calcCartTotal();
+  });
 
   function createCartItem(el) {
     let item = el.closest('.item');
@@ -158,7 +184,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
   function counterIncrement(el) {
     let menuCounter = document.querySelector('.header__menu-counter');
-    let itemsInCart = document.querySelectorAll('.header__cart-inner .header__cart-item');
+    let itemsInCart = document.querySelectorAll('.header__cart-item');
 
     menuCounter.textContent = `${++counter}`;
     if (!menuCounter.classList.contains('visible')) {
@@ -175,7 +201,17 @@ window.addEventListener('DOMContentLoaded', () => {
     return true
   }
 
+  function calcCartTotal() {
+    let itemsInCart = document.querySelectorAll('.header__cart-item');
+    let total = 0;
 
+    for (let item of itemsInCart) {
+      let count = item.querySelector('.header__cart-count').innerText;
+      let price = item.querySelector('.header__cart-price').innerText;
+      total += count * price
+    }
+    document.querySelector('.header__cart-total span').textContent = total *1000
+  }
 
   //Добавить класс хедеру при скролле
 
