@@ -97,23 +97,49 @@ $(document).ready(function () {
 
 window.addEventListener('DOMContentLoaded', () => {
 
-  let btns = document.querySelectorAll('.add-to-cart');
+  // cart
+
   let counter = 0;
 
-  for (let btn of btns) {
-    btn.addEventListener('click', (e) => {
+  window.addEventListener('click', (e) => {
+    if (e.target.closest('.add-to-cart')) {
       e.preventDefault();
-      counterIncrement();
-      createCartItem(e.target);
-    });
-  }
+      if (counterIncrement(e.target)) {
+        createCartItem(e.target)
+      }
+    }
+  })
+
+  document.querySelector('.header__cart-wrapper').addEventListener('click', (e) => {
+    let count;
+    let menuCounter = document.querySelector('.header__menu-counter');
+
+    
+
+    if (e.target.closest('.header__cart-minus') || e.target.closest('.header__cart-plus')) {
+      count = e.target.closest('.header__cart-counter').querySelector('.header__cart-count');
+    }
+
+    if (e.target.closest('.header__cart-minus')) {
+      if (+count.innerText > 1) {
+        count.innerText = --count.innerText;
+        menuCounter.textContent = `${--counter}`;
+      }
+    }
+
+    if (e.target.closest('.header__cart-plus')) {
+      count.innerText = ++count.innerText;
+      menuCounter.textContent = `${++counter}`;
+    }
+  })
 
   function createCartItem(el) {
     let item = el.closest('.item');
+    let itemId = item.dataset.id;
     let imgSrc = item.querySelector('img').src;
     let title = item.querySelector('.subtitle').textContent;
     let price = item.querySelector('.price').childNodes[0].nodeValue;
-    let template = `<div class="header__cart-item">
+    let template = `<div class="header__cart-item" data-id="${itemId}">
                       <div class="header__cart-image">
                         <img class="header__cart-img" src="${imgSrc}" alt="coffee">
                       </div>
@@ -121,7 +147,7 @@ window.addEventListener('DOMContentLoaded', () => {
                         <p class="header__cart-title subtitle">${title}</p>
                         <div class="header__cart-counter">
                           <div class="header__cart-minus">-</div>
-                          <div class="header__cart-count"></div>
+                          <div class="header__cart-count">1</div>
                           <div class="header__cart-plus">+</div>
                         </div>
                         <p class="header__cart-price text-accent">${price}</p>
@@ -130,14 +156,26 @@ window.addEventListener('DOMContentLoaded', () => {
     document.querySelector('.header__cart-inner').insertAdjacentHTML('beforeend', template)
   }
 
-  function counterIncrement() {
+  function counterIncrement(el) {
     let menuCounter = document.querySelector('.header__menu-counter');
+    let itemsInCart = document.querySelectorAll('.header__cart-inner .header__cart-item');
 
     menuCounter.textContent = `${++counter}`;
     if (!menuCounter.classList.contains('visible')) {
       menuCounter.classList.add('visible');
     }
+
+    for (let item of itemsInCart) {
+      if (item.dataset.id == el.closest('.item').dataset.id) {
+        item.querySelector('.header__cart-count').innerText++;
+        return false
+      }
+    }
+
+    return true
   }
+
+
 
   //Добавить класс хедеру при скролле
 
