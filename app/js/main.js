@@ -261,7 +261,7 @@ window.addEventListener('DOMContentLoaded', () => {
   });
   //закрытие по области по Esc
   window.addEventListener('keydown', (e) => {
-    if (e.keyCode == 27) {
+    if (e.code == 'Escape') {
       document.querySelector('.modal').classList.remove('visible');
     }
   });
